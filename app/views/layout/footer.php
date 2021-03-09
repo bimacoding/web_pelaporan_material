@@ -1,0 +1,1 @@
+Sistem Pelaporan Material Furniture © <?=date('Y')?>
