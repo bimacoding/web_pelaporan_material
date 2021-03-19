@@ -37,11 +37,21 @@
             <li> 
                 <a class="has-arrow waves-effect waves-dark col-12 text-truncate" href="javascript:void(0)" aria-expanded="false">
                     <i class="fas fa-cubes"></i>
-                    <span class="hide-menu">Kategori</span>
+                    <span class="hide-menu">Transaksi</span>
                 </a>
                 <ul aria-expanded="false" class="collapse">
-                    <li><a href="<?=base_url().'kategori/tambah_kategori'?>">Tambah Baru</a></li>
-                    <li><a href="<?=base_url().'kategori/indeks'?>">Data Kategori</a></li>
+                    <li><a href="<?=base_url().'spk/indeks'?>">SPK</a></li>
+                    <li><a href="<?=base_url().'material_spesification/indeks'?>">Material Specification</a></li>
+                </ul>
+            </li>
+            <li> 
+                <a class="has-arrow waves-effect waves-dark col-12 text-truncate" href="javascript:void(0)" aria-expanded="false">
+                    <i class="fas fa-cubes"></i>
+                    <span class="hide-menu">Master</span>
+                </a>
+                <ul aria-expanded="false" class="collapse">
+                    <li><a href="<?=base_url().'source/indeks'?>">Source</a></li>
+                    <li><a href="<?=base_url().'supplier/indeks'?>">Supplier</a></li>
                 </ul>
             </li>
             
@@ -52,7 +62,6 @@
                     <span class="hide-menu ">Options</span>
                 </a>
                 <ul aria-expanded="false" class="collapse">
-                    <li><a href="<?=base_url('siteman/identitaswebsite')?>">Website Manager</a></li>
                     <li><a href="<?=base_url('users/indeks')?>">User Manager</a></li>
                     <?php if($this->uri->segment(1)=='role'){ ?>
                     <li><a href="<?=base_url('role/indeks')?>">User group dan menu privilege</a></li>

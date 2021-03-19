@@ -129,13 +129,13 @@
                 <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor"><?=strtoupper('Page '.$this->uri->segment(1));?></h4>
+                        <h4 class="text-themecolor"><?=strtoupper('Page '.str_replace('_', ' ', $this->uri->segment(1)));?></h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                                <li class="breadcrumb-item active"><?=ucwords($this->uri->segment(1));?></li>
+                                <li class="breadcrumb-item active"><?=ucwords(str_replace('_', ' ', $this->uri->segment(1)));?></li>
                             </ol>
                             <!-- <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button> -->
                         </div>
@@ -342,6 +342,40 @@
                     if (isConfirm.value) {
                       $.ajax({
                             url: "<?=base_url()?>admin/ajax/hapus_data",
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {ids: ids, tbl:t}
+                        })
+                        .done(function() {
+                            $('#'+id).closest("tr").remove();
+                        })
+                        .fail(function() {
+                            swal("Terjadi kesalahan!","","error");
+                        });
+                    }else{
+                        swal("Data batal dihapus!");
+                    }
+                }
+            );
+        }
+
+        function confirmsmaterialdelete(id) {
+            var ids = $('#'+id).data('code');
+            var t  = $('#'+id).data('doc');
+            swal({
+                title: 'Apa anda yakin?',
+                text: "data yang dihapus tidak akan bisa kembali lagi!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+            })
+            .then(
+                function (isConfirm) {
+                    if (isConfirm.value) {
+                      $.ajax({
+                            url: "<?=base_url()?>admin/ajax/hapus_data_material",
                             type: 'POST',
                             dataType: 'json',
                             data: {ids: ids, tbl:t}

@@ -148,7 +148,7 @@
 		jsonRole.forEach(function(index, el) {
 			
 			html += '<tr id="'+index.id_role+'">'+
-					'<td wi dth="200">'+
+					'<td width="200">'+
 					'<span>'+index.module+'</span>'+
 					'</td>'+
 					'<td width="200" class="text-center">'+

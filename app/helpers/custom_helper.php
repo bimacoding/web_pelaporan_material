@@ -237,13 +237,13 @@
     }   
 
     function generateRandomString($length = 10) {
-        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_"), 0, $length);
     } 
 
     function recordUnique($key)
     {
         $ci = & get_instance();
-        return $ci->db->query("INSERT IGNORE INTO t_produk (kode_produk) VALUES ('".$key."')");;
+        return $ci->db->query("INSERT IGNORE INTO t_material_spesification (kode_material_spesification) VALUES ('".$key."')");;
     }
 
     function logAct($user,$act,$dt){

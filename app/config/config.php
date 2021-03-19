@@ -321,9 +321,11 @@ $config['csrf_exclude_uris'] = array(
 		'admin/ajax/upload_foto_product',
 		'admin/ajax/delete_foto_product',
 		'admin/ajax/saveProduk',
-		'admin/ajax/hapus_data'
-		
-		
+		'admin/ajax/hapus_data',
+		'admin/ajax/getSupplier',
+		'admin/ajax/getproductspesification',
+		'admin/ajax/productspesificationsave',
+		'admin/ajax/hapus_data_material'
 );
 
 /*

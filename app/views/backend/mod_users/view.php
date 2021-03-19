@@ -36,7 +36,7 @@
                                 <td><center><img src="<?=base_url().'assets/uploads/users/'.$row['foto']?>" class="img-circle img-responsive img-thumbnail" width="50"></center></td>
                                 <td><?=$row['nopeg']?></td>
                                 <td><?=$row['nama']?></td>
-                                <td><?=$row['id_level']?></td>
+                                <td><?=lvl($row['id_level'])?></td>
                                 <td>
                                     <center>
                                         <a href="<?=base_url().'users/ubah_users/'.$row['id_users'];?>" class="badge badge-success">

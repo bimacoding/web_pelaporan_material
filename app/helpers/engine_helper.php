@@ -13,6 +13,18 @@
         return $bg['gambar'];
     }
 
+    function namaUser($id=0){
+        $ci = & get_instance();
+        $bg = $ci->db->query("SELECT nama FROM t_users WHERE id_users = '".$id."' ORDER BY id_users DESC LIMIT 1")->row_array();
+        return $bg['nama'];
+    }
+
+    function lvl($id){
+        $ci = & get_instance();
+        $bg = $ci->db->query("SELECT nama_level FROM t_level WHERE id_level = '". $id ."' ORDER BY id_level DESC LIMIT 1")->row_array();
+        return $bg['nama_level'];
+    }
+
     function logo(){
         $ci = & get_instance();
         $logo = $ci->db->query("SELECT logo FROM t_identitas WHERE id_identitas = 1 ORDER BY id_identitas LIMIT 1")->row_array();

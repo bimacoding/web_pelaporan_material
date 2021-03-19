@@ -90,10 +90,10 @@ class Users extends CI_Controller {
 			if ($q) {
 				$this->session->set_flashdata('success', 'Data berhasil diproses!');
 				logAct($this->session->userdata('id'),'Tambah users',$this->input->post('nama'));
-				redirect('users?level='.$this->input->post('level'),'refresh');
+				redirect('users/indeks','refresh');
 			}else{
 				$this->session->set_flashdata('error', 'Data gagal diproses!');
-				redirect('users?level='.$this->input->post('level'),'refresh');
+				redirect('users/indeks','refresh');
 			}
 		}else{
 			$data['title'] = 'Tambah Data users';
@@ -144,10 +144,10 @@ class Users extends CI_Controller {
 			if ($q) {
 				$this->session->set_flashdata('success', 'Data berhasil diproses!');
 				logAct($this->session->userdata('id'),'Ubah users',$this->input->post('nama'));
-				redirect('users?level='.$this->input->post('level'),'refresh');
+				redirect('users/indeks','refresh');
 			}else{
 				$this->session->set_flashdata('error', 'Data gagal diproses!');
-				redirect('users?level='.$this->input->post('level'),'refresh');
+				redirect('users/indeks','refresh');
 			}
 		}else{
 			$data['title'] = 'Ubah Data users';

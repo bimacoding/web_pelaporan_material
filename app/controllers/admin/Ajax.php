@@ -60,6 +60,7 @@ class Ajax extends CI_Controller {
     }
 
     function getRoles(){
+    	
     	$json = array();
 		$dt = $this->model_app->view('t_role')->result_array();
 		foreach ($dt as $key => $j) {
@@ -72,6 +73,39 @@ class Ajax extends CI_Controller {
 		}
 		echo json_encode($json);
     }
+
+    function productspesificationsave(){
+    	$data = array(
+    		'kode_material_spesification' 	=> $this->input->post('kodes'),
+    		'row'   	=> $this->input->post('rows'),
+    		'ket' 	=> $this->input->post('kets'),
+    	);
+    	$q = $this->model_app->insert('t_product_spesification',$data);
+    	if ($q) {
+    		$id = $this->db->insert_id();
+    		$dt = $this->model_app->view_where('t_product_spesification',array('kode_material_spesification'=>$this->input->post('kode')))->result_array();
+    		$json = array('feed' => 1);
+    		echo json_encode($json);
+    	}else{
+    		$json = array('feed' => 0);
+    		echo json_encode($json);
+    	}
+    }
+
+    function getproductspesification(){
+    	$kd = $this->input->post('kode');
+    	$json = array();
+		$dt = $this->model_app->view_where('t_product_spesification',array('kode_material_spesification'=>$kd))->result_array();
+		foreach ($dt as $key => $j) {
+			$json[] = array(
+					'id' 	=> $j['id_product_spesification'],
+					'row' 	=> $j['row'],
+		    		'ket'   => $j['ket']
+				);
+		}
+		echo json_encode($json);
+    }
+    
 
     function updateRoles(){
 		$id 		= $this->input->post('id');
@@ -161,7 +195,7 @@ class Ajax extends CI_Controller {
 		 	$data = array('xyz'=>$this->upload->data());
 		 	$file = $data['xyz']['file_name'];
 		 	$this->_create_thumbs($file);
-		 	$q = $this->model_app->insert('t_pict',array('kode_produk'=>$this->input->post('id'),'img'=>$file));
+		 	$q = $this->model_app->insert('t_image_spesification',array('kode_material_spesification'=>$this->input->post('id'),'img'=>$file));
 		 	if ($q) {
 		 		$ret[] = $file;
 		 		echo json_encode($ret);
@@ -187,7 +221,7 @@ class Ajax extends CI_Controller {
 			$filePathSmall = $output_dir_small. $fileName;
 			if (file_exists($filePath)) 
 			{
-				$this->model_app->delete('t_pict',array('kode_produk'=>$this->input->post('id'),'img'=>$fileName));
+				$this->model_app->delete('t_image_spesification',array('kode_material_spesification'=>$this->input->post('id'),'img'=>$fileName));
 		        unlink($filePath);
 		        unlink($filePathLarge);
 		        unlink($filePathMedium);
@@ -197,25 +231,25 @@ class Ajax extends CI_Controller {
 		}
 	}
 
-	function saveproduk()
+	function savematerial()
 	{
 		$sts = $this->input->post('sts');
 		if ($sts=='add') {
 			$data = array(
-				'id_kat'    => $this->db->escape_str($this->input->post('kategori')),
-				'seo'       => seo_title($this->input->post('judul')),
-				'judul'     => $this->db->escape_str($this->input->post('judul')),
-				'ket'      	=> cetak($this->input->post('ket')),
-				'isi'      	=> cetak($this->input->post('isi')),
-				'harga'     => cetak($this->input->post('harga')),
-				'manfaat'   => cetak($this->input->post('manfaat')),
-				'keunggulan'=> cetak($this->input->post('keunggulan')),
-				'pemakaian' => cetak($this->input->post('pemakaian')),
-				'stok'      => $this->db->escape_str($this->input->post('stok')),
-				'berat'		=> $this->db->escape_str($this->input->post('berat')),
-				'createdAt' => date('Y-m-d H:i:s'),
-				'createdBy' => $this->session->userdata('nama'),
-				'publish'   => 'Y'
+				'id_supplier' => $this->db->escape_str($this->input->post('a')),
+				'pin' => $this->db->escape_str($this->input->post('b')),
+				'tgl' => $this->db->escape_str($this->input->post('c')),
+				'nama_item' => $this->db->escape_str($this->input->post('d')),
+				'kategori' => $this->db->escape_str($this->input->post('e')),
+				'tipe' => $this->db->escape_str($this->input->post('f')),
+				'warna' => $this->db->escape_str($this->input->post('g')),
+				'harga' => $this->db->escape_str($this->input->post('h')),
+				'moq' => $this->db->escape_str($this->input->post('i')),
+				'packaging' => $this->db->escape_str($this->input->post('j')),
+				'tr_reference' => $this->db->escape_str($this->input->post('k')),
+				'app_tipe_mesin' => $this->db->escape_str($this->input->post('l')),
+				'app_detil_mesin' => $this->db->escape_str($this->input->post('m')),
+				'ket' => $this->db->escape_str($this->input->post('n')),
 			);
 			$q = $this->model_app->update('t_produk',$data,array('kode_produk'=>$this->input->post('kode')));
 			if ($q) {
@@ -226,20 +260,20 @@ class Ajax extends CI_Controller {
 			}
 		}elseif($sts=='edit'){
 			$data = array(
-				'id_kat'    => $this->db->escape_str($this->input->post('kategori')),
-				'seo'       => seo_title($this->input->post('judul')),
-				'judul'     => $this->db->escape_str($this->input->post('judul')),
-				'ket'      	=> cetak($this->input->post('ket')),
-				'isi'      	=> cetak($this->input->post('isi')),
-				'harga'     => cetak($this->input->post('harga')),
-				'manfaat'   => cetak($this->input->post('manfaat')),
-				'keunggulan'=> cetak($this->input->post('keunggulan')),
-				'pemakaian' => cetak($this->input->post('pemakaian')),
-				'stok'      => $this->db->escape_str($this->input->post('stok')),
-				'berat'		=> $this->db->escape_str($this->input->post('berat')),
-				'modifAt'   => date('Y-m-d H:i:s'),
-				'modifBy'   => $this->session->userdata('nama'),
-				'publish'   => 'Y'
+				'id_supplier' => $this->db->escape_str($this->input->post('a')),
+				'pin' => $this->db->escape_str($this->input->post('b')),
+				'tgl' => $this->db->escape_str($this->input->post('c')),
+				'nama_item' => $this->db->escape_str($this->input->post('d')),
+				'kategori' => $this->db->escape_str($this->input->post('e')),
+				'tipe' => $this->db->escape_str($this->input->post('f')),
+				'warna' => $this->db->escape_str($this->input->post('g')),
+				'harga' => $this->db->escape_str($this->input->post('h')),
+				'moq' => $this->db->escape_str($this->input->post('i')),
+				'packaging' => $this->db->escape_str($this->input->post('j')),
+				'tr_reference' => $this->db->escape_str($this->input->post('k')),
+				'app_tipe_mesin' => $this->db->escape_str($this->input->post('l')),
+				'app_detil_mesin' => $this->db->escape_str($this->input->post('m')),
+				'ket' => $this->db->escape_str($this->input->post('n')),
 			);
 			$q = $this->model_app->update('t_produk',$data,array('kode_produk'=>$this->input->post('kode')));
 			if ($q) {
@@ -260,6 +294,23 @@ class Ajax extends CI_Controller {
 		$param = 'id_'.$tbl;
 		$q = $this->model_app->delete($table,array($param=>$id));
 		if ($q) {
+			logAct($this->session->userdata('id'),'Hapus Produk','data produk dihapus');
+			echo 1;
+		}else{
+			echo 0;
+		}
+	}
+
+	function hapus_data_material()
+	{
+		$id = $this->input->post('ids');
+		$tbl = $this->input->post('tbl');
+		$table = 't_'.$tbl;
+		$param = 'kode_'.$tbl;
+		$q = $this->model_app->delete($table,array($param=>$id));
+		if ($q) {
+			$this->model_app->delete("t_image_spesification",array($param=>$id));
+			$this->model_app->delete("t_product_spesification",array($param=>$id));
 			logAct($this->session->userdata('id'),'Hapus Produk','data produk dihapus');
 			echo 1;
 		}else{
@@ -365,6 +416,46 @@ class Ajax extends CI_Controller {
 			echo 1;
 		}else{
 			echo 2;
+		}
+	}
+
+	function getSupplier()
+	{
+		$id = $this->uri->segment(4);
+		$q = $this->model_app->view_where('t_supplier',array('id_supplier'=>$id));
+		
+		$cek = $q->num_rows();
+		if ($cek > 0) {
+			$row = $q->row_array();
+			$d = array(
+				'kontak' => $row['cp_supplier'],
+				'kota' => $row['kota_supplier'],
+				'cp1' => $row['tlp_supplier'],
+				'cp2' => $row['nohp_supplier'],
+				'email' => $row['email_supplier'],
+				'nomor' => $row['kode_supplier'],
+				'alamat' => $row['alamat_supplier'],
+			);
+			echo json_encode($d);
+		}else{
+			echo 0;
+		}
+	}
+
+	function getUsr()
+	{
+		$id = $this->uri->segment(4);
+		$q = $this->model_app->view_where('t_users',array('id_users'=>$id));
+		
+		$cek = $q->num_rows();
+		if ($cek > 0) {
+			$row = $q->row_array();
+			$d = array(
+				'email' => $row['email'],
+			);
+			echo json_encode($d);
+		}else{
+			echo 0;
 		}
 	}
 
