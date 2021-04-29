@@ -201,7 +201,7 @@
                 <div class="form-group row">
                     <label for="example-text-input" class="col-2 col-form-label">Objective Text</label>
                     <div class="col-10">
-                        <textarea class="form-control" name="v"></textarea>                       
+                        <textarea class="summernote" name="v"></textarea>                       
                     </div>
                 </div>
                 <div class="form-group row">

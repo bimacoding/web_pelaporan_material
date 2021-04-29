@@ -13,9 +13,9 @@
         <!--End Logo icon -->
         <!-- Logo text --><span>
          <!-- dark Logo text -->
-         <img src="<?=base_url()?>assets/images/logo-text.png" alt="homepage" class="dark-logo" style="width: 130px;"/>
+         <img src="<?=base_url()?>assets/images/logo.jpeg" alt="homepage" class="dark-logo" style="width: 130px;"/>
          <!-- Light Logo text -->    
-         <img src="<?=base_url()?>assets/images/logo-light-text.png" class="light-logo" alt="homepage" style="width: 130px;"/></span> </a>
+         <img src="<?=base_url()?>assets/images/logo.jpeg" class="light-logo" alt="homepage" style="width: 130px;"/></span> </a>
 </div>
 <!-- ============================================================== -->
 <!-- End Logo -->

@@ -325,7 +325,8 @@ $config['csrf_exclude_uris'] = array(
 		'admin/ajax/getSupplier',
 		'admin/ajax/getproductspesification',
 		'admin/ajax/productspesificationsave',
-		'admin/ajax/hapus_data_material'
+		'admin/ajax/hapus_data_material',
+		'admin/ajax/deleteProductSpek',
 );
 
 /*

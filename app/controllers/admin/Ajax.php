@@ -136,6 +136,16 @@ class Ajax extends CI_Controller {
 		}
     }
 
+    function deleteProductSpek(){
+    	$id 		= $this->input->post('id');
+		$q = $this->model_app->delete('t_product_spesification',array('id_product_spesification'=>$id));
+		if ($q) {
+			echo 1;
+		}else{
+			echo 0;
+		}
+    }
+
     //===================================================================
 	// Ajax manage role end!!
 	//===================================================================

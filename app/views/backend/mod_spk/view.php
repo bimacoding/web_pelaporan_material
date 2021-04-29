@@ -26,7 +26,7 @@
                             <th>Item Code</th>
                             <th>Item Name</th>
                             <th>Price</th>
-                            <th style="width: 50px">Aksi</th>
+                            <th style="width: 150px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +44,9 @@
                                 <td><?=$row['harga']?></td>
                                 <td>
                                     <center>
+                                        <a href="<?=base_url().'spk/cetak/'.$row['id_spk'];?>" target="_blank" class="badge badge-primary">
+                                            <i class="far fa-file"></i> Cetak
+                                        </a>
                                         <a href="<?=base_url().'spk/ubah_spk/'.$row['id_spk'];?>" class="badge badge-success">
                                             <i class="far fa-edit"></i>
                                         </a>

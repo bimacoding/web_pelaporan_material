@@ -34,17 +34,20 @@
                     <span class="hide-menu">Dashboard</span>
                 </a>
             </li>
-            <li> 
+            <li <?=cek_sessions()?>> 
                 <a class="has-arrow waves-effect waves-dark col-12 text-truncate" href="javascript:void(0)" aria-expanded="false">
                     <i class="fas fa-cubes"></i>
                     <span class="hide-menu">Transaksi</span>
                 </a>
                 <ul aria-expanded="false" class="collapse">
+                    <?php if($this->session->userdata('level')=='1'){ ?>
                     <li><a href="<?=base_url().'spk/indeks'?>">SPK</a></li>
+                    <?php } ?>
                     <li><a href="<?=base_url().'material_spesification/indeks'?>">Material Specification</a></li>
                 </ul>
             </li>
-            <li> 
+            <?php if($this->session->userdata('level')=='1'){ ?>
+            <li <?=cek_sessions()?>> 
                 <a class="has-arrow waves-effect waves-dark col-12 text-truncate" href="javascript:void(0)" aria-expanded="false">
                     <i class="fas fa-cubes"></i>
                     <span class="hide-menu">Master</span>
@@ -55,8 +58,8 @@
                 </ul>
             </li>
             
-            <?php if($this->session->userdata('level')=='1'){ ?>
-            <li> 
+            
+            <li<?=cek_sessions()?>> 
                 <a class="has-arrow waves-effect waves-dark col-12 text-truncate" href="javascript:void(0)" aria-expanded="false">
                     <i class="fas fa-cog"></i>
                     <span class="hide-menu ">Options</span>
@@ -75,7 +78,7 @@
             </li>
 
             <?php } ?>
-            <li> <a class="waves-effect waves-dark" href="<?=base_url('siteman/logout')?>" aria-expanded="false"><i class="fas fa-key"></i><span class="hide-menu">Keluar</span></a></li>
+            <li<?=cek_sessions()?>> <a class="waves-effect waves-dark" href="<?=base_url('siteman/logout')?>" aria-expanded="false"><i class="fas fa-key"></i><span class="hide-menu">Keluar</span></a></li>
         </ul>
     </nav>
     <!-- End Sidebar navigation -->

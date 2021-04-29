@@ -46,6 +46,11 @@
                     <form class="form-horizontal form-material" action="" method="POST">
                         <h3 class="text-center m-b-20">SELAMAT DATANG</h3>
                         <h5 class="text-center text-muted">Silahkan login terlebih dahulu untuk mengakses halaman ini.</h5>
+                        <?php if($this->session->flashdata('error')){ ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?php echo $this->session->flashdata('error'); ?>
+                            </div>
+                        <?php } ?>
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <input class="form-control" type="email" required="" name='a' placeholder="Email"> </div>

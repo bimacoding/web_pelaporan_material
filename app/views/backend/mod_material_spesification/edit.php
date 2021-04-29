@@ -503,7 +503,7 @@
 
                     $("#tbls").on("click", "#del"+index.id, function() {
                        $(this).closest("tr").remove();
-                       $.post("<?=base_url()?>admin/ajax/deleteRoles", {id: index.id}, function(data, textStatus, xhr) {
+                       $.post("<?=base_url()?>admin/ajax/deleteProductSpek", {id: index.id}, function(data, textStatus, xhr) {
                         console.log(data);
                        });
                     });
@@ -544,12 +544,7 @@
             data: {kodes:kodes, rows:rows, kets:kets},
         })
         .done(function(dt) {
-
-            if(dt.feed==1){
-                $("#appendFeed").html("tes");
-            }else{
-                console.log('gagal')
-            }
+            $(window).on('load',$(showall()));
         })
         .fail(function() {
             console.log("error");

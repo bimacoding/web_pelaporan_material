@@ -13,6 +13,13 @@ class Spk extends CI_Controller {
 			cekAksesUser($lv, uri_string());
 		}
 	}
+
+	public function cetak()
+	{
+		$data['title']  = "Data spk";
+		$data['row'] = $this->model_app->view_two_join_wheres('t_spk','t_source','t_supplier','id_source','id_supplier',array('id_spk'=>$this->uri->segment(3)),'id_spk','DESC')->row_array();
+		$this->load->view('backend/mod_spk/cetak', $data, FALSE);
+	}
 	
 	function index()
 	{

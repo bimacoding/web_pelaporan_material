@@ -26,6 +26,7 @@ class Siteman extends CI_Controller {
 				redirect('siteman/home');
 			}else{
 				$data['title'] = 'Username atau Password salah!';
+				$this->session->set_flashdata('error', 'Username atau Password salah!');
 				$this->load->view('backend/login',$data);
 			}
 		}else{

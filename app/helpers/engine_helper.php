@@ -217,6 +217,29 @@
         }
     }
 
+    function cek_sessions(){
+        $ci = & get_instance();
+        $session = $ci->session->userdata('level');
+        switch ($session) {
+            case 6:
+                echo '';
+                break;
+            case 8:
+                echo '';
+                break;
+            case 9:
+                echo '';
+                break;
+            case 1:
+                echo '';
+                break;
+            
+            default:
+                echo "class='hide'";
+                break;
+        }
+    }
+
     function cek_session_user(){
         $ci = & get_instance();
         $session = $ci->session->userdata('level');;
