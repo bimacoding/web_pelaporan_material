@@ -40,7 +40,7 @@
                     <span class="hide-menu">Transaksi</span>
                 </a>
                 <ul aria-expanded="false" class="collapse">
-                    <?php if($this->session->userdata('level')=='1'){ ?>
+                    <?php if($this->session->userdata('level')=='1' || $this->session->userdata('level')=='2'){ ?>
                     <li><a href="<?=base_url().'spk/indeks'?>">SPK</a></li>
                     <?php } ?>
                     <li><a href="<?=base_url().'material_spesification/indeks'?>">Material Specification</a></li>

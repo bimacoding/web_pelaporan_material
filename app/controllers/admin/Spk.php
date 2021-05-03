@@ -7,7 +7,7 @@ class Spk extends CI_Controller {
 	{
 		parent::__construct();
 		$lv = $this->session->userdata('level');
-		if ($lv=='1' || $lv='6' || $lv='8' || $lv='9') {
+		if ($lv=='1' || $lv='6' || $lv='8' || $lv='9' || $lv='2') {
 			cekAksesUser($lv, uri_string(),true);
 		}else{
 			cekAksesUser($lv, uri_string());

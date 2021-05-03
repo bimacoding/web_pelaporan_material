@@ -233,6 +233,9 @@
             case 1:
                 echo '';
                 break;
+            case 2:
+                echo '';
+                break;
             
             default:
                 echo "class='hide'";
