@@ -47,12 +47,14 @@
                                         <a href="<?=base_url().'spk/cetak/'.$row['id_spk'];?>" target="_blank" class="badge badge-primary">
                                             <i class="far fa-file"></i> Cetak
                                         </a>
-                                        <a href="<?=base_url().'spk/ubah_spk/'.$row['id_spk'];?>" class="badge badge-success">
-                                            <i class="far fa-edit"></i>
-                                        </a>
-                                        <a href="#0" class="badge badge-danger" data-code="<?=$row['id_spk']?>" data-doc="spk" id="delete<?=$no?>" onclick="confirms(this.id)">
-                                            <i class="far fa-trash-alt"></i>
-                                        </a>
+                                        <?php if($this->session->userdata('level')!=2){ ?>
+                                            <a href="<?=base_url().'spk/ubah_spk/'.$row['id_spk'];?>" class="badge badge-success">
+                                                <i class="far fa-edit"></i>
+                                            </a>
+                                            <a href="#0" class="badge badge-danger" data-code="<?=$row['id_spk']?>" data-doc="spk" id="delete<?=$no?>" onclick="confirms(this.id)">
+                                                <i class="far fa-trash-alt"></i>
+                                            </a>
+                                        <?php } ?>
                                     </center>
                                 </td>
                             </tr>

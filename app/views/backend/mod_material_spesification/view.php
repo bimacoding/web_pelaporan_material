@@ -11,7 +11,7 @@
      <div class="card">
         <div class="card-body">
             <h4 class="card-title"><?=$title?>
-                <a href="<?=base_url('material_spesification/')?>" class="btn btn-info btn-xs float-right <?=$this->session->userdata('level')!=1?'hide':'';?>"><i class="fa fa-plus-circle"></i> Tambah</a>
+                <a href="<?=base_url('material_spesification/')?>" class="btn btn-info btn-xs float-right <?=$this->session->userdata('level')!=1 OR 2?'hide':'';?>"><i class="fa fa-plus-circle"></i> Tambah</a>
             </h4>
             <h6 class="card-subtitle">Semua data material spesification</h6>
         
